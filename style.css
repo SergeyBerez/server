@@ -1,0 +1,14 @@
+body {
+  background: grey;
+}
+
+
+.box {
+  background: blue;
+}
+@media all and (min-width: 600px) {
+  .box {
+    background: red;
+    border: 1px solid #000;
+  }
+}
