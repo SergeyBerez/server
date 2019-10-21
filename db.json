@@ -1,8 +1,9 @@
 {
-  "posts": [
+  "GET": [
     {
       "id": 1,
-      "title": "hello"
+      "title": "привет",
+      "img": "Social Icons by Dreamstale (17).png"
     },
     {
       "id": 2,
