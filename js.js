@@ -48,7 +48,7 @@ function sendPost() {
 document.querySelector('.btn1').onclick = function(e) {
   e.preventDefault();
 
-  myAxiosGet('https://my-json-server.typicode.com/SergeyBerez/server/my_get')
+  myAxiosGet('https://my-json-server.typicode.com/SergeyBerez/server/myGet')
     .then(Arr => {
       createCart(Arr);
     })
