@@ -48,7 +48,7 @@ function sendPost() {
 document.querySelector('.btn1').onclick = function(e) {
   e.preventDefault();
 
-  myAxiosGet('https://my-json-server.typicode.com/SergeyBerez/server/posts')
+  myAxiosGet('https://my-json-server.typicode.com/SergeyBerez/server')
     .then(dataArr => {
       createCart(dataArr);
     })
@@ -58,8 +58,8 @@ document.querySelector('.btn1').onclick = function(e) {
 };
 // функция по вствки с карточек в нtml
 function createCart(dataArr) {
-  dataArr.forEach(element => {
-    console.log(element);
+  dataArr.forEach(obj => {
+    console.log(obj);
     // let div = document.createElement('div');
     // div.className = 'card';
     // div.innerHTML = `<img src="${element.first}" alt="">`;
@@ -76,8 +76,9 @@ function myAxiosGet(url) {
     xhr.send();
     xhr.onload = function() {
       if (xhr.readyState == 4 && xhr.status == 200) {
-        console.log(JSON.parse(xhr.response));
-        resolve(JSON.parse(xhr.response));
+        let arr = JSON.parse(xhr.response);
+        console.log(arr.posts);
+        resolve(arr.posts);
       } else {
         var error = new Error('ошибка');
         reject(error);
