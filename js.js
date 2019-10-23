@@ -30,7 +30,7 @@ function sendPost() {
     Password: document.querySelector('[type="password"]').value,
     email: document.querySelector('[name="email"]').value,
   };
-  fetch('https://my-json-server.typicode.com/SergeyBerez/server/posts', {
+  fetch('https://my-json-server.typicode.com/SergeyBerez/server/my_get', {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
@@ -48,22 +48,22 @@ function sendPost() {
 document.querySelector('.btn1').onclick = function(e) {
   e.preventDefault();
 
-  myAxiosGet('https://my-json-server.typicode.com/SergeyBerez/server')
-    .then(dataArr => {
-      createCart(dataArr);
+  myAxiosGet('https://my-json-server.typicode.com/SergeyBerez/server/my_get')
+    .then(Arr => {
+      createCart(Arr);
     })
     .catch(error => {
       console.log(error);
     });
 };
 // функция по вствки с карточек в нtml
-function createCart(dataArr) {
-  dataArr.forEach(obj => {
+function createCart(Arr) {
+  Arr.forEach(obj => {
     console.log(obj);
-    // let div = document.createElement('div');
-    // div.className = 'card';
-    // div.innerHTML = `<img src="${element.first}" alt="">`;
-    // document.querySelector('header').insertAdjacentElement('beforeend', div);
+    let div = document.createElement('div');
+    div.className = 'card';
+    div.innerHTML = `<img src="${obj.photo}" alt="">`;
+    document.querySelector('header').insertAdjacentElement('beforeend', div);
   });
 }
 // ---------------------------
@@ -77,8 +77,8 @@ function myAxiosGet(url) {
     xhr.onload = function() {
       if (xhr.readyState == 4 && xhr.status == 200) {
         let arr = JSON.parse(xhr.response);
-        console.log(arr.posts);
-        resolve(arr.posts);
+        console.log(arr);
+        resolve(arr);
       } else {
         var error = new Error('ошибка');
         reject(error);
@@ -87,11 +87,5 @@ function myAxiosGet(url) {
     xhr.onerror = function() {
       reject(new Error('Network Error'));
     };
-
-    // xhr.onload = function() {
-
-    //   resolve(JSON.parse(xhr.response));
-    // };
-    // xhr.onerror = reject(new Error('ошиббббкаааа'));
   });
 }
