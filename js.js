@@ -30,7 +30,7 @@ function sendPost() {
     Password: document.querySelector('[type="password"]').value,
     email: document.querySelector('[name="email"]').value,
   };
-  fetch('https://my-json-server.typicode.com/SergeyBerez/server/my_get', {
+  fetch('https://my-json-server.typicode.com/SergeyBerez/server/myGet', {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
