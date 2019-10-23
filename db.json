@@ -1,5 +1,5 @@
 {
-  "my_post": [
+  "myPost": [
     {
       "id": 10,
       "title": "hello 10"
@@ -12,7 +12,7 @@
   "profile": {
     "name": "typicode"
   },
-  "my_get": [
+  "myGet": [
     {
       "id": 1,
       "name": "John",
