@@ -1,11 +1,11 @@
 {
   "myPost": [
     {
-      "id": 1,
+      "id": 100,
       "title": "ваша заявка принята"
     },
     {
-      "id": 2,
+      "id": 101,
       "title": "hello 20"
     }
   ],
@@ -22,6 +22,7 @@
       "photo": "https://m.media-amazon.com/images/M/MV5BMjM3MjM3NTAxM15BMl5BanBnXkFtZTgwMTY0Nzg2OTE@._V1_.jpg"
     },
     {
+      "id": 2,
       "name": "Angela",
       "surname": "Whinston",
       "sex": "female",
