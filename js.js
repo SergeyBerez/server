@@ -1,24 +1,33 @@
 // ======================запрос axios
-// document.forms[0].addEventListener('submit', function(e) {
-//   e.preventDefault();
-//   let data = {
-//     Name: document.querySelector('[type="text"]').value,
-//     Password: document.querySelector('[type="password"]').value,
-//     email: document.querySelector('[name="email"]').value,
-//   };
-//   axios
-//     .post('https://my-json-server.typicode.com/SergeyBerez/server/posts', data)
-//     .then(function(response) {
-//       console.log(response);
-//       let { data } = response;
-//       return data;
-//     })
-//     .then(data => {
-//       console.log(data);
-//     })
-//     .catch(error => {
-//       console.log(`ошибка ${error}`);
-//     });
+document.forms[0].addEventListener('submit', function(e) {
+  e.preventDefault();
+  let data = {
+    Name: document.querySelector('[type="text"]').value,
+    Password: document.querySelector('[type="password"]').value,
+    email: document.querySelector('[name="email"]').value,
+  };
+
+  // подвешиваем событие на форму и вызываем axios.post()
+  axios
+    .post(
+      'https://my-json-server.typicode.com/SergeyBerez/server/myPost',
+      data,
+    )
+    .then(function(response) {
+      console.log(response);
+      let { data } = response;
+      console.log(data);
+      return data;
+    })
+    .then(data => {
+      // console.log(data);
+    })
+    .catch(error => {
+      console.log(`ошибка ${error}`);
+    });
+});
+
+//===
 
 //======================запрос фетч
 document.querySelector('.btn3').addEventListener('click', function(e) {
@@ -30,20 +39,24 @@ function sendPost() {
     Password: document.querySelector('[type="password"]').value,
     email: document.querySelector('[name="email"]').value,
   };
-  fetch('https://my-json-server.typicode.com/SergeyBerez/server/myGet', {
+  fetch('https://my-json-server.typicode.com/SergeyBerez/server/myPost', {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
     },
   })
-    .then(response => response.json())
+    .then(response => {
+      console.log(response);
+      return response.json();
+    })
     .then(json => console.log(json))
     .catch(function(error) {
       console.log(`ошибка ${error}`);
     });
 }
 
+//============================
 // // ==============самописная функиция  myAxios
 document.querySelector('.btn1').onclick = function(e) {
   e.preventDefault();
@@ -77,7 +90,7 @@ function myAxiosGet(url) {
     xhr.onload = function() {
       if (xhr.readyState == 4 && xhr.status == 200) {
         let arr = JSON.parse(xhr.response);
-        console.log(arr);
+        console.log(xhr.response);
         resolve(arr);
       } else {
         var error = new Error('ошибка');
@@ -89,3 +102,21 @@ function myAxiosGet(url) {
     };
   });
 }
+
+// document.addEventListener('click', function(e) {
+//   httpGetAsync(
+//     'https://my-json-server.typicode.com/SergeyBerez/server/myGet',
+//     function(e) {
+//       console.log(e);
+//     },
+//   );
+// });
+// function httpGetAsync(url, callback) {
+//   var xmlHttp = new XMLHttpRequest();
+//   xmlHttp.onreadystatechange = function() {
+//     if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+//       callback(xmlHttp.responseText);
+//   };
+//   xmlHttp.open('GET', url, true);
+//   xmlHttp.send(null);
+// }
