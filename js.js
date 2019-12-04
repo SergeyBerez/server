@@ -9,10 +9,7 @@ document.forms[0].addEventListener('submit', function(e) {
 
   // подвешиваем событие на форму и вызываем axios.post()
   axios
-    .post(
-      'https://my-json-server.typicode.com/SergeyBerez/server/myPost',
-      data,
-    )
+    .post('https://my-json-server.typicode.com/SergeyBerez/server/myPost', data)
     .then(function(response) {
       console.log(response);
       let { data } = response;
@@ -29,32 +26,7 @@ document.forms[0].addEventListener('submit', function(e) {
 
 //===
 
-//======================запрос фетч
-document.querySelector('.btn3').addEventListener('click', function(e) {
-  sendPost();
-});
-function sendPost() {
-  let data = {
-    Name: document.querySelector('[type="text"]').value,
-    Password: document.querySelector('[type="password"]').value,
-    email: document.querySelector('[name="email"]').value,
-  };
-  fetch('https://my-json-server.typicode.com/SergeyBerez/server/myPost', {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  })
-    .then(response => {
-      console.log(response);
-      return response.json();
-    })
-    .then(json => console.log(json))
-    .catch(function(error) {
-      console.log(`ошибка ${error}`);
-    });
-}
+//=====
 
 //============================
 // // ==============самописная функиция  myAxios
