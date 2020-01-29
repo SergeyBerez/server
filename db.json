@@ -149,7 +149,7 @@
 
       "completed": false,
       "photo": "https://cdn3.iconfinder.com/data/icons/fruits-8/512/avocado-512.png"
-    }
+    },
      {
       "id": 1110,
       "title": "Fruit",
@@ -158,6 +158,6 @@
 
       "completed": false,
       "photo": "https://cdn0.iconfinder.com/data/icons/fruits-29/310/fruit_strawberry-512.png"
-    },
+    }
   ]
 }
