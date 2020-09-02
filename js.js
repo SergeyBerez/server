@@ -1,5 +1,5 @@
 // ======================запрос axios
-document.forms[0].addEventListener('submit', function(e) {
+document.forms[0].addEventListener('submit', function (e) {
   e.preventDefault();
   let data = {
     Name: document.querySelector('[type="text"]').value,
@@ -10,7 +10,7 @@ document.forms[0].addEventListener('submit', function(e) {
   // подвешиваем событие на форму и вызываем axios.post()
   axios
     .post('https://my-json-server.typicode.com/SergeyBerez/server/myPost', data)
-    .then(function(response) {
+    .then(function (response) {
       console.log(response);
       let { data } = response;
       console.log(data);
@@ -30,23 +30,32 @@ document.forms[0].addEventListener('submit', function(e) {
 
 //============================
 // // ==============самописная функиция  myAxios
-document.querySelector('.btn1').onclick = function(e) {
+document.querySelector('.btn1').onclick = async function (e) {
   e.preventDefault();
+  try {
+    let response = await myAxiosGet(
+      'https://my-json-server.typicode.com/SergeyBerez/server/myGet',
+    );
 
-  myAxiosGet('https://my-json-server.typicode.com/SergeyBerez/server/myGet')
-    .then(Arr => {
-      createCart(Arr);
-    })
-    .catch(error => {
-      console.log(error);
-    });
+    createCart(response);
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+
+  // .then(Arr => {
+  //   createCart(Arr);
+  // })
+  // .catch(error => {
+  //   console.log(error);
+  // });
 };
 // функция по вствки с карточек в нtml
 function createCart(Arr) {
   Arr.forEach(obj => {
     console.log(obj);
     let div = document.createElement('div');
-    div.className = 'card';
+    div.classList.add('card');
     div.innerHTML = `<img src="${obj.photo}" alt="">`;
     document.querySelector('header').insertAdjacentElement('beforeend', div);
   });
@@ -55,23 +64,23 @@ function createCart(Arr) {
 
 // =================сама функция
 function myAxiosGet(url) {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', url);
     xhr.send();
-    xhr.onload = function() {
+    xhr.onload = function () {
       if (xhr.readyState == 4 && xhr.status == 200) {
         let arr = JSON.parse(xhr.response);
         console.log(xhr.response);
         resolve(arr);
       } else {
-        var error = new Error('ошибка');
-        reject(error);
+        reject(new Error('Network Error'));
       }
     };
-    xhr.onerror = function() {
-      reject(new Error('Network Error'));
-    };
+    // xhr.onerror = function () {
+    //   console.log('error');
+    //   reject(new Error('Network Error'));
+    // };
   });
 }
 
