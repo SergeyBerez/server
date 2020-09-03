@@ -34,18 +34,31 @@ input::placeholder {
 [type='submit']:active {
   background: yellowgreen;
 }
-
+.section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 .card {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  text-align: center;
   box-sizing: border-box;
   margin: 20px;
   padding: 20px;
   width: calc(100% / 4 - 40px);
-  /* width: 200px; */
-
+  min-width: 100px;
+  width: 200px;
   border: 1px solid #000;
 }
 .card img {
-  display: block;
-  max-width: 100%;
-  height: auto;
+  margin-top: auto;
+  object-fit: contain;
+  
+  width: 100px;
+  height: 100px;
+  /* width: 100%; */
 }

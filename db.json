@@ -61,11 +61,11 @@
       "sex": "male",
       "age": 30,
       "completed": false,
-      "photo": "https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w425/cast/3b2b388f58aae2da_yr_michaelm_800x1000.jpg"
+      "photo": "/img/photo_2019-10-31_18-34-27.jpg"
     }
   ],
   "getGoods": [
-     {
+    {
       "id": 110,
       "title": "Fruit",
       "name": "Apple",
@@ -150,7 +150,7 @@
       "completed": false,
       "photo": "https://cdn3.iconfinder.com/data/icons/fruits-8/512/avocado-512.png"
     },
-     {
+    {
       "id": 1110,
       "title": "Fruit",
       "name": "strawberry",

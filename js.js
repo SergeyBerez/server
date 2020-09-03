@@ -54,10 +54,24 @@ document.querySelector('.btn1').onclick = async function (e) {
 function createCart(Arr) {
   Arr.forEach(obj => {
     console.log(obj);
-    let div = document.createElement('div');
-    div.classList.add('card');
-    div.innerHTML = `<img src="${obj.photo}" alt="">`;
-    document.querySelector('header').insertAdjacentElement('beforeend', div);
+    let div = `
+      <div class="card">
+        <h1>${obj.name}</h1>
+        <h3>${obj.title}</h3>
+        <img src="${obj.photo}" alt="foto" />
+      </div>
+    `;
+    //let div = document.createElement('div');
+   // div.classList.add('card');
+    // div.innerHTML = 
+    // `
+    //   <div class="card">
+    //     <h1>name</h1>
+    //     <h3>title</h3>
+    //     <img src="${obj.photo}" alt="foto" />
+    //   </div>
+    // `;
+    document.querySelector('.section').insertAdjacentHTML('beforeend', div);
   });
 }
 // ---------------------------
