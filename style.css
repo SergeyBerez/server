@@ -12,28 +12,18 @@ header {
 }
 
 .form {
-  text-align: center;
-  margin-top: 50px;
-  width: 200px;
+  width: 100%;
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  /* width: 200px; */
   background: rgba(128, 128, 128, 0.178);
-  border-radius: 10px;
 }
-label {
-  color: grey;
-  font-size: 20px;
+.btn {
+  margin: auto;
+  align-self: center;
 }
-input:hover {
-  background: burlywood;
-}
-input::placeholder {
-  color: rgb(255, 136, 0);
-}
-[type='submit'] {
-  width: 70px;
-}
-[type='submit']:active {
-  background: yellowgreen;
-}
+
 .section {
   display: flex;
   flex-direction: row;
@@ -57,8 +47,26 @@ input::placeholder {
 .card img {
   margin-top: auto;
   object-fit: contain;
-  
+
   width: 100px;
   height: 100px;
   /* width: 100%; */
+}
+.box-icons {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.block-icon {
+  display: inline-flex;
+  width: 100px;
+  height: 100px;
+
+  border-radius: 50%;
+  background: rgba(75, 47, 129, 0.445);
+  justify-content: center;
+  margin: 10px;
+}
+.block-icon img {
+  width: 35px;
 }

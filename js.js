@@ -1,3 +1,5 @@
+const btn = document.querySelector('.btn1');
+
 // ======================запрос axios
 document.forms[0].addEventListener('submit', function (e) {
   e.preventDefault();
@@ -13,7 +15,7 @@ document.forms[0].addEventListener('submit', function (e) {
     .then(function (response) {
       console.log(response);
       let { data } = response;
-      console.log(data);
+
       return data;
     })
     .then(data => {
@@ -30,29 +32,42 @@ document.forms[0].addEventListener('submit', function (e) {
 
 //============================
 // // ==============самописная функиция  myAxios
-document.querySelector('.btn1').onclick = async function (e) {
-  e.preventDefault();
-  try {
-    let response = await myAxiosGet(
-      'https://my-json-server.typicode.com/SergeyBerez/server/myGet',
-    );
 
-    createCart(response);
-    console.log(response);
-  } catch (error) {
-    console.log(error);
-  }
+// const aaa = async function (e) {
+//   e.preventDefault();
+//   try {
+//     let response = await myAxiosGet(
+//       'https://my-json-server.typicode.com/SergeyBerez/server/myGet',
+//     );
 
-  // .then(Arr => {
-  //   createCart(Arr);
-  // })
-  // .catch(error => {
-  //   console.log(error);
-  // });
+//     createCart(response);
+//     console.log(response);
+//   } catch (error) {
+//     console.log(error);
+//   }
+
+// .then(Arr => {
+//   createCart(Arr);
+// })
+// .catch(error => {
+//   console.log(error);
+// });
+//};
+
+const getSomeData = () => {
+  myAxiosGet('https://my-json-server.typicode.com/SergeyBerez/server/myGt')
+    .then(data => {
+      createCart(data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
+
+btn.addEventListener('click', getSomeData);
 // функция по вствки с карточек в нtml
-function createCart(Arr) {
-  Arr.forEach(obj => {
+function createCart(data) {
+  data.forEach(obj => {
     console.log(obj);
     let div = `
       <div class="card">
@@ -61,16 +76,7 @@ function createCart(Arr) {
         <img src="${obj.photo}" alt="foto" />
       </div>
     `;
-    //let div = document.createElement('div');
-   // div.classList.add('card');
-    // div.innerHTML = 
-    // `
-    //   <div class="card">
-    //     <h1>name</h1>
-    //     <h3>title</h3>
-    //     <img src="${obj.photo}" alt="foto" />
-    //   </div>
-    // `;
+
     document.querySelector('.section').insertAdjacentHTML('beforeend', div);
   });
 }
@@ -84,9 +90,9 @@ function myAxiosGet(url) {
     xhr.send();
     xhr.onload = function () {
       if (xhr.readyState == 4 && xhr.status == 200) {
-        let arr = JSON.parse(xhr.response);
-        console.log(xhr.response);
-        resolve(arr);
+        let data = JSON.parse(xhr.response);
+
+        resolve(data);
       } else {
         reject(new Error('Network Error'));
       }

@@ -27,32 +27,33 @@
 //     });
 // }
 
-document.forms[1].addEventListener('submit', function(e) {
+document.forms[1].addEventListener('submit', function (e) {
   e.preventDefault();
-  //  let data = {
-  //    Name: document.querySelector('[type="text"]').value,
-  //    Password: document.querySelector('[type="password"]').value,
-  //    email: document.querySelector('[name="email"]').value,
-  //  };
 
-  let data = new FormData(document.forms[1]);
-  for (let [name, value] of data) {
-    console.log(name); 
-    console.log(data);
-  }
+  let data = {
+    Name: e.target.querySelector('[type="text"]').value,
+    Password: e.target.querySelector('[type="password"]').value,
+    email: e.target.querySelector('[name="email"]').value,
+  };
+
+  // let data = new FormData(document.forms[1]);
+  // for (let [name, value] of data) {
+  //   console.log(name);
+  //   console.log(data);
+  // }
   fetch('https://my-json-server.typicode.com/SergeyBerez/server/myPost', {
     method: 'POST',
-    body: data,
-    //  headers: {
-    //    'Content-type': 'application/json; charset=UTF-8',
-    //  },
+    body: JSON.stringify(data),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
   })
     .then(response => {
       console.log(response);
       return response.json();
     })
     .then(json => console.log(json))
-    .catch(function(error) {
+    .catch(error => {
       console.log(`ошибка ${error}`);
     });
 });
